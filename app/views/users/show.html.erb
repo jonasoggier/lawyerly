@@ -1,0 +1,13 @@
+<%= render '/shared/flashes' %>
+
+<div class = "user-info">
+	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+	<h5><em><%= @user.teaser %></em></h5>
+	<br>
+	<h5><%= @user.description %></h5>
+
+	<%= link_to "Edit Profile", edit_user_path %>
+	<br>
+	<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
+</div>
+

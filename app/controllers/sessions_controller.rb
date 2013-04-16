@@ -1,21 +1,16 @@
 class SessionsController < ApplicationController
 
-	# Login page
-  def new
-  end
+	skip_before_filter :require_login, :only => [:create]
 
-  # Login submit action
   def create
 		@user = login(params[:email], params[:password])
 		if @user
-			redirect_to :root, :notice => "Welcome back, #{current_user.first_name}!"
+			redirect_to @user, :notice => "Welcome back, #{current_user.first_name}!"
 		else
-			flash.now[:alert] = "Invalid credentials. Try again!"
-			render :new
+			redirect_to :root, :alert => "Invalid credentials. Try again!"
 		end
   end
 
-  # Logout submit
   def destroy
 		logout
 		redirect_to :root, notice: "Bye... Hope to see you later!"

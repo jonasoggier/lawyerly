@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :require_login
+
 	protected
 
 	def not_authenticated
-	  redirect_to new_session_path, :alert => "Please login first in order to proceed."
+	  redirect_to root_path, :alert => "Please login first in order to proceed."
 	end
 
 end

@@ -2,8 +2,8 @@ Lawyerly::Application.routes.draw do
   
   root :to => 'home#index'  
   
-  resources :users
-  resource :session, :only => [:new, :create, :destroy]
+  resources :users # exclude index?
+  resource :session, :only => [:create, :destroy]
   
  
 end

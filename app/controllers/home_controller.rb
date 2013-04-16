@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
 
-	def index		
+	skip_before_filter :require_login
+
+	def index	
 	end
 	
 end
