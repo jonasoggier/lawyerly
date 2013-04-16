@@ -19,22 +19,28 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])   
+    if current_user == User.find(params[:id]) # TBD if this is sufficient protection!
+      @user = User.find(params[:id])   
+    end
   end
 
   def update  
-    @user = User.find(params[:id]) 
-    if @user.update_attributes(params[:user])  
-      redirect_to @user, notice: "Profile successfully updated." 
-    else
-      # do something else TODO
+    if current_user == User.find(params[:id]) # TBD if this is sufficient protection!
+      @user = User.find(params[:id]) 
+      if @user.update_attributes(params[:user])  
+        redirect_to @user, notice: "Profile successfully updated." 
+      else
+        # do something else TODO
+      end
     end
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to root_path
+    if current_user == User.find(params[:id]) # TBD if this is sufficient protection!
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to root_path
+    end
   end
 
 end
