@@ -1,19 +1,7 @@
-<div class="homepage-container">
-	
- 	<%= render '/shared/flashes' %>
+<% if logged_in? %>
+	<%= render 'feed' %>
+<% else %>
+	<%= render 'welcomescreen' %>
+<% end %>
 
-	<div class="homepage-tagline">
-		<h1>Welcome to Lawyerly!</h1>
-	</div>
-
-	<div class="both-forms">
-		<div class="sign-in-form">
-			<%= render "/sessions/new" %>
-		</div>
-		<div class="sign-up-form">
-			<%= render "/users/newuser", :user => User.new %> 
-		</div>
-	</div>
-
-</div>
 
