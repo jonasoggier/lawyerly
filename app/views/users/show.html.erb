@@ -3,6 +3,7 @@
 <div class="row user-info">
 	
 	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+	<%= link_to "Follow", relationships_path(:followed_user_id => @user), :method => :post %>
 	<h5><em><%= @user.teaser %></em></h5>
 	<br>
 	<h5><%= @user.description %></h5>
@@ -31,4 +32,18 @@
 		<% end %>
 	<% end %>
 </div>
+
+<h4>Following:</h4>
+<ul>
+  <% @user.relationships.each do |relationship| %>
+  	<li><%= relationship.followed_user.first_name %> <%= relationship.followed_user.last_name %> <%= link_to "Unfollow", relationship, :method => :delete %></li>
+  <% end %>  
+</ul>
+
+<h4>Followers:</h4>
+<ul>
+  <% @user.inverse_followed_users.each do |user| %>
+  	<li><%= user.first_name %> <%= user.last_name %></li>
+  <% end %>
+</ul>
 

@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
+  
   authenticates_with_sorcery!
 
   has_many :posts, :dependent => :destroy
+
+  has_many :relationships
+  has_many :followed_users, :through => :relationships
+  has_many :inverse_relationships, :class_name => "Relationship", :foreign_key => "followed_user_id"
+  has_many :inverse_followed_users, :through => :inverse_relationships, :source => :user
 
   attr_accessible :first_name, :last_name, :email, :teaser, :description, :password, :password_confirmation
 
