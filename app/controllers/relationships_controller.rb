@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
   
   def create
-  	@relationship = current_user.relationships.build(:followed_user_id => params[:followed_user_id])
+		@relationship = current_user.relationships.build(:followed_user_id => params[:followed_user_id])
 	  if @relationship.save
 	    flash[:notice] = "You are now following xxx ."
 	    redirect_to current_user
