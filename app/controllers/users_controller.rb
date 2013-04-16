@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]) 
+    @post = @user.posts.build # needed as input for new posts form
+    @posts = @user.posts # needed to display list of all posts
   end
 
   def create

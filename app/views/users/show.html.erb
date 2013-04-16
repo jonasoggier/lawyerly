@@ -1,6 +1,6 @@
 <%= render '/shared/flashes' %>
 
-<div class = "user-info">
+<div class="user-info">
 	
 	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
 	<h5><em><%= @user.teaser %></em></h5>
@@ -10,7 +10,21 @@
 	<% if @user == current_user %>
 		<%= link_to "Edit Profile", edit_user_path %><br>
 		<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
+	
+		<div>
+			<h5>New Post</h5>
+			<%= render "newpost" %> 
+		</div>
+
 	<% end %>
+
+	<div>
+		<h4>Latests posts</h4>
+		<% @posts.each do |post| %>
+			<h5><em><%= post.title %></em></h5>
+			<h5><%= post.body %></h5>
+		<% end %>
+	</div>
 
 </div>
 

@@ -1,0 +1,9 @@
+<%= form_for [@user, @post] do |f| %>
+
+	<div class="span5">
+	  <%= f.text_field :title, placeholder: "Title", class: "input-block-level" %>
+	  <%= f.text_area :body, placeholder: "Your Post", class: "input-block-level" %>
+	  <%= f.submit 'Create New Post', class: 'btn btn-primary span2' %>
+	</div>
+
+<% end %>
