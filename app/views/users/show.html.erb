@@ -1,49 +1,63 @@
 <%= render '/shared/flashes' %>
 
-<div class="row user-info">
-	
-	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-	<%= link_to "Follow", relationships_path(:followed_user_id => @user), :method => :post %>
-	<h5><em><%= @user.teaser %></em></h5>
-	<br>
-	<h5><%= @user.description %></h5>
-
-	<% if @user == current_user %>
-		<%= link_to "Edit Profile", edit_user_path %><br>
-		<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
-	
-		<div>
-			<h5>New Post</h5>
-			<%= render "newpost" %> 
-		</div>
-
-	<% end %>
-
-</div>
-
-<div class="row show-posts">
-	<h4>Latests posts by <%= @user.first_name %> <%= @user.last_name %></h4>
-	<% @posts.each do |post| %>
-		<h5><em><%= post.title %></em></h5>
-		<h6><%= post.body %></h6>
-		<!-- TODO: delete link is still broken -->
-		<% if @user == current_user %>
-			<%= link_to "Delete Post", user_post_path([@user, post]), :method => :delete %>
+<div class="row">
+	<div class="span7 offset3">
+		<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+		
+		<% unless @user == current_user %> 
+			<% if following? %>
+				<%= link_to "Unfollow", unfollow_path, :method => :delete, :class => "btn btn-warning" %>
+			<% else %>
+				<%= link_to "Follow", relationships_path(:followed_user_id => @user), :method => :post, :class => "btn btn-primary" %>
+			<% end %>
 		<% end %>
-	<% end %>
+
+		<h5><em><%= @user.teaser %></em></h5>
+		<br>
+		<h5><%= @user.description %></h5>
+
+		<% if @user == current_user %>
+			<%= link_to "Edit Profile", edit_user_path %><br>
+			<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
+		
+			<div>
+				<h5>New Post</h5>
+				<%= render "newpost" %> 
+			</div>
+		
+		<% end %>
+	</div>
+
+	<div class="span5">
+		<h4>Following: <%= @user.relationships.count %></h4>
+			<ul>
+	  		<% @user.relationships.each do |relationship| %>
+	  			<li><%= relationship.followed_user.first_name %> <%= relationship.followed_user.last_name %> <%= link_to "Unfollow", relationship, :method => :delete %></li>
+	  		<% end %>  
+			</ul>
+
+		<h4>Followers: <%= @user.inverse_relationships.count %></h4>
+			<ul>
+			  <% @user.inverse_followed_users.each do |user| %>
+			  	<li><%= user.first_name %> <%= user.last_name %></li>
+			  <% end %>
+			</ul>
+	</div>
 </div>
 
-<h4>Following:</h4>
-<ul>
-  <% @user.relationships.each do |relationship| %>
-  	<li><%= relationship.followed_user.first_name %> <%= relationship.followed_user.last_name %> <%= link_to "Unfollow", relationship, :method => :delete %></li>
-  <% end %>  
-</ul>
+<div class="row">
+	<div class="span7 offset3">
+		<h4>Latests posts by <%= @user.first_name %> <%= @user.last_name %></h4>
+		<% @posts.each do |post| %>
+			<h5><em><%= post.title %></em></h5>
+			<h6><%= post.body %></h6>
+			<!-- TODO: delete link is still broken -->
+			<% if @user == current_user %>
+				<%= link_to "Delete Post", user_post_path([@user, post]), :method => :delete %>
+			<% end %>
+		<% end %>
+	</div>	
+</div>
 
-<h4>Followers:</h4>
-<ul>
-  <% @user.inverse_followed_users.each do |user| %>
-  	<li><%= user.first_name %> <%= user.last_name %></li>
-  <% end %>
-</ul>
+
 
