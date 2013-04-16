@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
 
-  skip_before_filter :require_login
-
   # The 'new action' is 'included' under views/users/show
 
 	def create
@@ -12,6 +10,14 @@ class PostsController < ApplicationController
   	else
   		render :new # TODO
   	end
+  end
+
+  def destroy  # TODO this is still broken!!
+    #if current_user == User.find(params[:id]) # TBD if this is sufficient protection!
+      @post = Post.find params[:id]
+      @post.destroy
+      redirect_to current_user, alert: "Post successfully deleted."
+    #end
   end
 
 end

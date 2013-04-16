@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_many :posts
+  has_many :posts, :dependent => :destroy
 
   attr_accessible :first_name, :last_name, :email, :teaser, :description, :password, :password_confirmation
 

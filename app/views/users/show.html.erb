@@ -1,6 +1,6 @@
 <%= render '/shared/flashes' %>
 
-<div class="user-info">
+<div class="row user-info">
 	
 	<h3><%= @user.first_name %> <%= @user.last_name %></h3>
 	<h5><em><%= @user.teaser %></em></h5>
@@ -18,13 +18,17 @@
 
 	<% end %>
 
-	<div>
-		<h4>Latests posts</h4>
-		<% @posts.each do |post| %>
-			<h5><em><%= post.title %></em></h5>
-			<h5><%= post.body %></h5>
-		<% end %>
-	</div>
+</div>
 
+<div class="row show-posts">
+	<h4>Latests posts by <%= @user.first_name %> <%= @user.last_name %></h4>
+	<% @posts.each do |post| %>
+		<h5><em><%= post.title %></em></h5>
+		<h6><%= post.body %></h6>
+		<!-- TODO: delete link is still broken -->
+		<% if @user == current_user %>
+			<%= link_to "Delete Post", user_post_path([@user, post]), :method => :delete %>
+		<% end %>
+	<% end %>
 </div>
 
