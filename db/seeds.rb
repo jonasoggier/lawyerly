@@ -126,7 +126,14 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
  	counter += 1
 end
 
-# 20.times do 
-# 	relationship = Relationship.create!(user_id: (Random.rand(10)+1), followed_user_id: (Random.rand(10)+11))
-# end
+# Relationship.create!(user_id: (Random.rand(10)+1), followed_user_id: (Random.rand(10)+11))
+Relationship.create!(user_id: 1, followed_user_id: 2)
+Relationship.create!(user_id: 2, followed_user_id: 3)
+Relationship.create!(user_id: 3, followed_user_id: 4)
+Relationship.create!(user_id: 4, followed_user_id: 5)
+Relationship.create!(user_id: 5, followed_user_id: 6)
+Relationship.create!(user_id: 6, followed_user_id: 7)
+Relationship.create!(user_id: 7, followed_user_id: 8)
+Relationship.create!(user_id: 8, followed_user_id: 9)
+
 
