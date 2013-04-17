@@ -6,9 +6,11 @@
 		
 		<% unless @user == current_user %> 
 			<% if following_helper_1? %>
-				<%= link_to "Unfollow", unfollow_path, :method => :delete, :class => "btn btn-warning" %>
+				<%= link_to "Unfollow", unfollow_path, remote: true, :method => :delete, :class => "btn btn-warning", :id => "ajax-unfollow" %>
 			<% else %>
-				<%= link_to "Follow", relationships_path(:followed_user_id => @user), :method => :post, :class => "btn btn-primary" %>
+				<div id = "ajax-follow">
+					<%= link_to "Follow", relationships_path(:followed_user_id => @user), remote: true, :method => :post, :class => "btn btn-primary" %>
+				</div>
 			<% end %>
 		<% end %>
 
