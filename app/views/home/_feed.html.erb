@@ -1,9 +1,9 @@
-<h2>Welcome <%= current_user.first_name %>!</h2>
+<h2 class="offset2">Welcome <%= current_user.first_name %>!</h2>
 
 <!-- TBD if better in partial to be shared with users/1/show -->
 <div class="row">
 	<div class="span7 offset3">
-		<% @posts.each do |post| %>
+		<% @feed_items.each do |post| %>
 			<h5><%= post.title %> by <em><%= post.user.first_name %> <%= post.user.last_name %></em></h5>
 			<h6><%= post.body %></h6>
 			<h6><em>Last updated: <%= post.created_at %></em></h6>	

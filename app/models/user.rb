@@ -14,5 +14,9 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 5, :message => "Password must be at least 5 characters long", :if => :password
   validates_confirmation_of :password, :message => "Password should match confirmation", :if => :password
   validates :email, :presence => true, :uniqueness => true
+
+  def feed
+    Post.from_users_followed_by(self)
+  end
   
 end

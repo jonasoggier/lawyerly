@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
 		@user = login(params[:email], params[:password])
 		if @user
-			redirect_to @user, :notice => "Welcome back, #{current_user.first_name}!"
+			redirect_to root_path, :notice => "Welcome back, #{current_user.first_name}!"
 		else
 			redirect_to :root, :alert => "Invalid credentials. Try again!"
 		end
