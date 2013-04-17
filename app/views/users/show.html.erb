@@ -54,19 +54,7 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="span7 offset3">
-		<h4>Latests posts by <%= @user.first_name %> <%= @user.last_name %></h4>
-		<% @posts.each do |post| %>
-			<h5><em><%= post.title %></em></h5>
-			<h6><%= post.body %></h6>
-			<!-- TODO: delete link is still broken -->
-			<% if @user == current_user %>
-				<%= link_to "Delete Post", user_post_path([@user, post]), :method => :delete %>
-			<% end %>
-		<% end %>
-	</div>	
-</div>
+<%= render "display_posts" %> 
 
 
 

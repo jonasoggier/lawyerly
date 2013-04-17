@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :posts, :dependent => :destroy
 
+  has_many :comments, :dependent => :destroy
+
   has_many :relationships
   has_many :followed_users, :through => :relationships
   has_many :inverse_relationships, :class_name => "Relationship", :foreign_key => "followed_user_id"

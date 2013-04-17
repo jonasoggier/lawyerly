@@ -5,7 +5,9 @@ Lawyerly::Application.routes.draw do
   resource :session, :only => [:create, :destroy]
 
   resources :users do  # exclude index?
-  	resources :posts  # TODO exclude unneeded actions!
+  	resources :posts do # TODO exclude unneeded actions!
+  		resources :comments # TODO exclude unneeded actions!
+  	end
   end
 
   resources :relationships, :only => [:create, :destroy]
