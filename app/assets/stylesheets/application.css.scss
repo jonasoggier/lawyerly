@@ -12,3 +12,39 @@
  *= require_tree .
  */
 
+.text-container {
+ 	position: absolute;
+	padding-top: 60px;
+	background-color: #F6F6F6;
+	width: 100%;
+	height: auto;
+}
+
+.flashes {
+	width: 400px;	
+	font-size: 12px;
+	margin: auto;
+	line-height: 16px;
+}
+
+.navbar-inner {
+	color: #BBB;
+	text-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px;
+}
+
+.nav-right {
+	position: absolute;
+	right: 20px;
+	line-height: 40px;
+	font-size: 12px;
+	text-decoration: none;
+	margin-right: 15px;	
+}
+
+.sign-out {
+	padding-left: 10px;
+	&:hover {
+		text-decoration: none;
+		color: white;
+	}
+}

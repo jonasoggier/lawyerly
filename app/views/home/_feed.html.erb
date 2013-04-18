@@ -1,24 +1,27 @@
-<h2 class="offset2">Welcome <%= current_user.first_name %>!</h2>
+<div class="text-container">
+	<div class="posts-container">
+		<h2>Welcome back, <%= current_user.first_name %></h2>
 
-<!-- TBD if better in partial to be shared with users/1/show -->
-<div class="row">
-	<div class="span7 offset3">
 		<% @feed_items.each do |post| %>
-			<h5><%= post.title %> by <em><%= post.user.first_name %> <%= post.user.last_name %></em></h5>
-			<h6><%= truncate(post.body, :length => 400, :separator => ' ',:omission => '... (continued)') %></h6>
-			<h6><em>Last updated: <%= post.created_at %></em></h6>	
+			<div class="post">
+				<h5><%= post.title %></h5>
+				<p class="subline"><%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %> wrote this <%=distance_of_time_in_words(Time.now, post.created_at, include_seconds = false) %> ago</p>
+				<h6><%= truncate(post.body, :length => 350, :separator => ' ',:omission => '... (continued)') %></h6>
 
-			<ul style='list-style:none'>
-				<li id="comments-show"><%= pluralize(post.comments.count, 'comment') %></li>
-				<li style="display: none">
-				<%= render 'shared/comments', :post => post %></li>
-			</ul>	
-
+				<ul>
+					<li id="comments-show">
+						<a href="#"><%= pluralize(post.comments.count, 'comment') %></a>
+					</li>
+					<li class="hide-comments">
+						<%= render 'shared/comments', :post => post %>
+					</li>
+				</ul>	
+			</div>
 		<% end %>
 
 		<%= paginate @feed_items %>
-
-	</div>	
+		
+	</div>
 </div>
 
 

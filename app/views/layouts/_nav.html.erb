@@ -1,17 +1,19 @@
-<div class="navbar">
-  <div class="navbar-inner">
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
    	<%= link_to "Lawyerly", root_path, :class => "brand" %>
+   	<%= render '/shared/flashes' %>
     <ul class="nav">
     	<% if logged_in? %>
-	      <li class="<%= "active" if controller_name == "#" %>"><%= link_to "My Profile", user_path(current_user) %></li> <!-- TODO active state needs to be fixed -->
+    	  <li class="<%= "active" if controller_name == "#" %>"><%= link_to "My Profile", user_path(current_user) %></li> <!-- TODO active state needs to be fixed -->
       <% end %>
     </ul>
   
-	  <div class="pull-right">
+	  <div class="nav-right">
 		  <% if logged_in? %>
-		    <p>Signed-in as <%= current_user.first_name %> <%= current_user.last_name %>!</p><%= link_to 'Logout', :session, :method => :delete, class: 'btn' %>
+		    <p><%= current_user.first_name %> <%= current_user.last_name %><%= link_to 'Sign out', :session, :method => :delete, :class => "sign-out" %></p>
 		  <% end %>
 		</div>
 
 	</div>
 </div>
+
