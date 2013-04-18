@@ -5,7 +5,8 @@ module RelationshipsHelper
 	end
 
 	def unfollow_path
-		current_user.relationships.where(:followed_user_id => params[:id]).first # returns followed_user instance / there is always only one in the DB (thus first is okay)
+		id = params[:id] ? params[:id] : params[:followed_user_id]
+		current_user.relationships.where(:followed_user_id => id).first # returns followed_user instance / there is always only one in the DB (thus first is okay)
 	end
 
 	def following_helper_2?(user)
