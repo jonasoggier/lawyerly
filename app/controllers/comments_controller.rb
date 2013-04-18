@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(params[:comment])
     @comment.user = current_user
     @comment.save
-    redirect_to current_user, :notice => "Your comment was successfully submitted."
+    redirect_to root_path, :notice => "Your comment was successfully submitted."
   end
 
   def edit

@@ -11,7 +11,11 @@
 			</div>
 			<h6 class="row"><%= post.body %></h6>
 
-			<%= render 'shared/comments', :post => post %>
+			<ul style='list-style:none'>
+				<li id="comments-show"><%= pluralize(post.comments.count, 'comment') %></li>
+				<li style="display: none">
+				<%= render 'shared/comments', :post => post %></li>
+			</ul>	
 
 		<% end %>
 		

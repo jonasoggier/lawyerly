@@ -5,15 +5,20 @@
 	<div class="span7 offset3">
 		<% @feed_items.each do |post| %>
 			<h5><%= post.title %> by <em><%= post.user.first_name %> <%= post.user.last_name %></em></h5>
-			<h6><%= post.body %></h6>
+			<h6><%= truncate(post.body, :length => 400, :separator => ' ',:omission => '... (continued)') %></h6>
 			<h6><em>Last updated: <%= post.created_at %></em></h6>	
 
-			<%= render 'shared/comments', :post => post %>
-		
+			<ul style='list-style:none'>
+				<li id="comments-show"><%= pluralize(post.comments.count, 'comment') %></li>
+				<li style="display: none">
+				<%= render 'shared/comments', :post => post %></li>
+			</ul>	
+
 		<% end %>
 
 		<%= paginate @feed_items %>
 
 	</div>	
 </div>
+
 
