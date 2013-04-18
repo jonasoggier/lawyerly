@@ -5,7 +5,7 @@ module RelationshipsHelper
 	end
 
 	def unfollow_path
-		id = params[:id] ? params[:id] : params[:followed_user_id]
+		id = params[:id] ? params[:id] : params[:followed_user_id] # this accounts for the first load and the subsequent Ajax requests
 		current_user.relationships.where(:followed_user_id => id).first # returns followed_user instance / there is always only one in the DB (thus first is okay)
 	end
 
