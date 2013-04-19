@@ -5,6 +5,7 @@ class HomeController < ApplicationController
 	def index
 		if logged_in?
       @feed_items = current_user.feed.page params[:page] 
+      @users = User.all  # this is for the temporary list of users on homepage
     end
 	end
 
