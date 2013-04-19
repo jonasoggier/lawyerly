@@ -2,15 +2,11 @@
 
 	<div class="homepage-tagline">
 		<h1>Welcome to Lawyerly!</h1>
+		<h2>Find interesting content, connect with other lawyers and build your personal brand...</h2>
 	</div>
 
-	<div class="both-forms">
-		<div class="sign-in-form">
-			<%= render "/sessions/new" %>
-		</div>
-		<div class="sign-up-form">
-			<%= render "/users/newuser", :user => User.new %> 
-		</div>
-	</div>
+	<%= render "/sessions/new" %>
+
+	<%= render "/users/newuser", :user => User.new %> 
 
 </div>
