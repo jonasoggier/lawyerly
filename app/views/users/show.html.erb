@@ -14,18 +14,19 @@
 				<% end %>
 			<% end %>
 
-			<h5><em><%= @user.teaser %></em></h5>
+			<h5><%= @user.teaser %></h5>
 			<br>
-			<h5><%= @user.description %></h5>
+			<h6><%= @user.description %></h6>
 
-			<% if current_user == @user %>
-				<%= link_to "Edit Profile", edit_user_path %><br>
+			<h6><% if current_user == @user %>
+				<%= link_to "Edit Profile", edit_user_path %>
 				<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
+			</h6>
 			
-				<div>
-					<h5>New Post</h5>
-					<%= render "newpost" %> 
-				</div>
+			<div>
+				<h5>New Post</h5>
+				<%= render "newpost" %> 
+			</div>
 			
 			<% end %>
 		</div>

@@ -18,6 +18,22 @@
 	padding: 30px 60px;
 	font-family: Georgia,'Times New Roman', serif;
 	font-weight: 200;
+	h3 {
+		font-size: 31px;
+	}
+	h5 {
+		font-size: 20px;
+		line-height: 30px;
+		font-weight: bold;
+	}
+	h6 {
+		font-size: 20px;
+		line-height: 30px;
+		font-weight: normal;
+		}
+	.newpost {
+		margin-left: 0;
+	}
 }
 
 .current_user-display {
