@@ -1,41 +1,48 @@
-<%= render '/shared/flashes' %>
+<div class="text-container">
+	
+	<%= render '/shared/flashes' %>
 
-<div class="row">
-	<div class="span7 offset3">
-		<h3><%= @user.first_name %> <%= @user.last_name %></h3>
-		
-		<% unless @user == current_user %> 
-			<% if following_helper_1? %>
-				<%= render 'unfollow_button' %>
-			<% else %>
-				<%= render 'follow_button' %>
+  <div class="user-container">
+		<div class="user-info">
+			<h3><%= @user.first_name %> <%= @user.last_name %></h3>
+			
+			<% unless @user == current_user %> 
+				<% if following_helper_1? %>
+					<%= render 'unfollow_button' %>
+				<% else %>
+					<%= render 'follow_button' %>
+				<% end %>
 			<% end %>
-		<% end %>
 
-		<h5><em><%= @user.teaser %></em></h5>
-		<br>
-		<h5><%= @user.description %></h5>
+			<h5><em><%= @user.teaser %></em></h5>
+			<br>
+			<h5><%= @user.description %></h5>
 
-		<% if current_user == @user %>
-			<%= link_to "Edit Profile", edit_user_path %><br>
-			<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
-		
-			<div>
-				<h5>New Post</h5>
-				<%= render "newpost" %> 
-			</div>
-		
-		<% end %>
-	</div>
+			<% if current_user == @user %>
+				<%= link_to "Edit Profile", edit_user_path %><br>
+				<%= link_to "Delete Account", user_path, :method => :delete, :confirm => "You sure?" %>
+			
+				<div>
+					<h5>New Post</h5>
+					<%= render "newpost" %> 
+				</div>
+			
+			<% end %>
+		</div>
 
-	<div class="span5">
-		<%= render 'following_stats' %>
-		<%= render 'followers_stats' %>
+		<div class="users-list-container">
+			<%= render 'following_stats' %>
+			<%= render 'followers_stats' %>
+		</div>
+
+		<!-- Display list of all posts -->
+		<div class="posts-container">
+			<h2>Latests posts</h2>
+			<%= render 'shared/posts', :posts_variable => @posts %>
+		</div>
 	</div>
 
 </div>
-
-<%= render "display_posts" %> 
 
 
 

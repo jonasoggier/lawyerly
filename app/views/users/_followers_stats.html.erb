@@ -1,11 +1,11 @@
 <h4 id="ajax-followers-count">Followers: <%= @user.inverse_relationships.count %></h4>
 			<% if current_user == @user %>
-				<ul>
+				<ul class="current_user-display">
 				  <% @user.inverse_followed_users.each do |user| %>
 				  	<li>
 				  		<%= link_to "#{user.first_name} #{user.last_name}", user %> 
 							<% unless following_helper_2?(user) %>
-				  			<%= link_to "Follow", relationships_path(:followed_user_id => user), :method => :post %>
+				  			<%= link_to "- Follow", relationships_path(:followed_user_id => user), :method => :post %>
 				  		<% end %>
 				  	</li>
 				  <% end %>

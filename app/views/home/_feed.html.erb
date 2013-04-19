@@ -1,36 +1,24 @@
 <div class="text-container">
-	<div class="posts-container">
-		<h2>Welcome back, <%= current_user.first_name %></h2>
 
-		<% @feed_items.each do |post| %>
-			<div class="post">
-				<h5><%= post.title %></h5>
-				<p class="subline"><%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %> wrote this <%=distance_of_time_in_words(Time.now, post.created_at, include_seconds = false) %> ago</p>
-				<h6><%= truncate(post.body, :length => 350, :separator => ' ',:omission => '... (continued)') %></h6>
+	<div class="feed-container">
+	
+		<!-- Display list of all posts -->
+		<div class="posts-container">
+			<h2>Welcome back, <%= current_user.first_name %></h2>
+			<%= render 'shared/posts', :posts_variable => @feed_items %>
+		</div>
 
-				<ul>
-					<li id="comments-show">
-						<a href="#"><%= pluralize(post.comments.count, 'comment') %></a>
-					</li>
-					<li class="hide-comments">
-						<%= render 'shared/comments', :post => post %>
-					</li>
-				</ul>	
-			</div>
-		<% end %>
-
-		<%= paginate @feed_items %>
+		<!-- Display list of all users -->
+		<div class="users-list-container">
+			<h4>List of users</h4>
+			<% @users.each do |user| %>
+				 <p><%= link_to "#{user.first_name} #{user.last_name}", user %> 
+				 		<% unless following_helper_2?(user) %>
+				 			<%= link_to " - Follow", relationships_path(:followed_user_id => user), :method => :post %>
+				 		<% end %></p>
+			<% end %> 
+		</div>
 		
-	</div>
-
-	<div class="users-list-container">
-		<h4>List of users</h4>
-		<% @users.each do |user| %>
-			 <p><%= link_to "#{user.first_name} #{user.last_name}", user %> 
-			 		<% unless following_helper_2?(user) %>
-			 			<%= link_to "Follow", relationships_path(:followed_user_id => user), :method => :post %>
-			 		<% end %></p>
-		<% end %> 
 	</div>
 
 </div>

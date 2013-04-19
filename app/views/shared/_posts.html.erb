@@ -1,0 +1,23 @@
+<% posts_variable.each do |post| %>
+	<div class="post">
+		<h5><%= post.title %></h5>
+		<p class="subline"><%= link_to "#{post.user.first_name} #{post.user.last_name}", post.user %> wrote this <%=distance_of_time_in_words(Time.now, post.created_at, include_seconds = false) %> ago</p>
+		<h6><%= truncate(post.body, :length => 350, :separator => ' ',:omission => '... (continued)') %></h6>
+
+		<ul>
+			<li id="comments-show">
+				<a href="#"><%= pluralize(post.comments.count, 'comment') %></a> 
+				<!-- TODO: delete link is still broken -->
+				<% if @user == current_user %>
+					<%= link_to "Delete Post", user_post_path([@user, post]), :method => :delete %>
+				<% end %>
+			</li>
+			<li class="hide-comments">
+				<%= render 'shared/comments', :post => post %>
+			</li>
+		</ul>	
+	</div>
+<% end %>
+
+<%= paginate posts_variable %>
+		

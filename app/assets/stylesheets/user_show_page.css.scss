@@ -1,0 +1,30 @@
+.user-container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1020px; 
+	height: auto;
+}
+
+.user-info {
+	float: left;
+	margin-bottom: 20px;
+	width: 500px;
+	height: auto;
+	background-color: white;
+	color: #333;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #E6E6E6;
+	padding: 30px 60px;
+	font-family: Georgia,'Times New Roman', serif;
+	font-weight: 200;
+}
+
+.current_user-display {
+	list-style: none;
+	padding-bottom: 20px;
+	li {
+		line-height: 30px;	
+		margin-left: -25px;
+	}
+}
