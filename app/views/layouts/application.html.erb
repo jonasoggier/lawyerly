@@ -8,7 +8,9 @@
 </head>
 <body>
 
-<%= render "/layouts/nav" %>
+<% unless controller_name == 'home' && !logged_in? %>
+	<%= render "/layouts/nav" %>
+<% end %>
 
 <%= yield %>
 
