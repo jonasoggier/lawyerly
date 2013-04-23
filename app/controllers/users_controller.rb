@@ -4,14 +4,6 @@ class UsersController < ApplicationController
 
   # "new action" is on homepage (home#index) 
   
-  def index
-    @search = User.search do
-      fulltext params[:search]
-      paginate :per_page => 15
-    end
-    @users = @search.results
-  end
-
   def show
     @user = User.find(params[:id]) 
     @post = Post.new # needed as input for new posts form
