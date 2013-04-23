@@ -1,6 +1,12 @@
 <div class="text-container">
 
 	<div class="feed-container">
+
+		<!-- Search box -->
+		<%= form_tag users_path, :method => :get do %>
+  		<%= text_field_tag :search, params[:search] %>
+		  <%= submit_tag "Search Users", :name => nil %>
+		<% end %>
 	
 		<!-- Display list of all posts -->
 		<div class="posts-container">

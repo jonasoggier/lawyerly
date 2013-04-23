@@ -3,6 +3,14 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, :only => [:create]
 
   # "new action" is on homepage (home#index) 
+  
+  def index
+    @search = User.search do
+      fulltext params[:search]
+      paginate :per_page => 15
+    end
+    @users = @search.results
+  end
 
   def show
     @user = User.find(params[:id]) 
