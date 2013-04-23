@@ -2,12 +2,6 @@
 
 	<div class="feed-container">
 
-		<!-- Search box -->
-		<%= form_tag users_path, :method => :get do %>
-  		<%= text_field_tag :search, params[:search] %>
-		  <%= submit_tag "Search Users", :name => nil %>
-		<% end %>
-	
 		<!-- Display list of all posts -->
 		<div class="posts-container">
 			<h2>Welcome back, <%= current_user.first_name %></h2>
@@ -18,10 +12,11 @@
 		<div class="users-list-container">
 			<h4>List of users</h4>
 			<% @users.each do |user| %>
-				 <p><%= link_to "#{user.first_name} #{user.last_name}", user %> 
+				<p><%= link_to "#{user.first_name} #{user.last_name}", user %> 
 				 		<% unless following_helper_2?(user) %>
 				 			<%= link_to " - Follow", relationships_path(:followed_user_id => user), :method => :post %>
-				 		<% end %></p>
+				 		<% end %>
+				</p>
 			<% end %> 
 		</div>
 		
