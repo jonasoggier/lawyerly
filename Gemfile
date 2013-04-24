@@ -6,7 +6,6 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'sunspot_rails'
   
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,7 +32,6 @@ group :development do
 	gem 'binding_of_caller'
 	gem 'pry-rails'
 	gem "letter_opener"
-  gem 'sunspot_solr'
 end
 
 # To use ActiveModel has_secure_password
