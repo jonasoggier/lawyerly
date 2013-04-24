@@ -5,7 +5,7 @@
 .posts-container {
 	float: left;
 	margin-bottom: 40px;
-	width: 500px;
+	width: 600px;
 	height: auto;
 	background-color: white;
 	color: #333;
@@ -26,6 +26,8 @@
 	h5 {
 		font-size: 26px;
 		font-weight: bold;
+		line-height: 30px;
+		margin-top: 5px;
 	}
 	.subline {
 		font-style: italic;
@@ -36,6 +38,7 @@
 		font-size: 20px;
 		line-height: 27px;
 		font-weight: normal;
+		padding-top: 10px;
 	}
 	#comments-show {
 		margin-left: -23px;
