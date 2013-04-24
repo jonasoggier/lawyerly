@@ -14,6 +14,7 @@
 				<% end %>
 			<% end %>
 
+			<%= image_tag @user.profile_picture_url.to_s, :class => "profile_picture" %>
 			<h5><%= @user.teaser %></h5>
 			<br>
 			<h6><%= @user.description %></h6>

@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user , :html => {:multipart => true} do |f| %>
 
   <% unless f.object.errors.empty? %>
       <% if @user.errors.any? %>
@@ -19,6 +19,7 @@
     <%= f.text_field :email, placeholder: "Email Address", class: "input-block-level" %>
     <%= f.text_area :teaser, placeholder: "Short Description", class: "input-block-level" %>
     <%= f.text_area :description, placeholder: "Describe yourself", class: "input-block-level" %>
+    <label class="control-label" for="profile_picture">Upload your profile picture</label><%= f.file_field :profile_picture %>
     <%= f.submit 'Update Profile', class: 'btn btn-warning span2' %>
   </div>
 

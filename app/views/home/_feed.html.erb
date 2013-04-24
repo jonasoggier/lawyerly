@@ -12,6 +12,7 @@
 		<div class="users-list-container">
 			<h4>List of users</h4>
 			<% @users.each do |user| %>
+			<%= image_tag user.profile_picture_url(:small_thumb).to_s, :class => "profile_picture" %>
 				<p><%= link_to "#{user.first_name} #{user.last_name}", user %> 
 				 		<% unless following_helper_2?(user) %>
 				 			<%= link_to " - Follow", relationships_path(:followed_user_id => user), :method => :post %>
