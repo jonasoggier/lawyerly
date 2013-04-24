@@ -11,7 +11,8 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage ( (Rails.env.development? or Rails.env.test?) ? :file : :fog )
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
