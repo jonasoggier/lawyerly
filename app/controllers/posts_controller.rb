@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
 	def create
-    @user = User.find params[:user_id]  # evt. put into separate 'require_user' method
+    @user = User.find params[:user_id] # evt. put into separate 'require_user' method
   	@post = @user.posts.build params[:post]
   	if @post.save
   		redirect_to current_user, notice: "Post successfully published."

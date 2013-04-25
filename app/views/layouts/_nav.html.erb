@@ -1,19 +1,30 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
+
+	<!-- Left part of navbar -->
 	<div class="navbar-inner">
    	<%= link_to "Lawyerly", root_path, :class => "brand" %>
    	<%= render '/shared/flashes' %>
     <ul class="nav">
     	<% if logged_in? %>
-    	  <li class="<%= "active" if controller_name == "#" %>"><%= link_to "My Profile", user_path(current_user) %></li> <!-- TODO active state needs to be fixed -->
+    		<!-- TODO active state needs to be fixed -->
+    	  <li class="<%= "active" if controller_name == "#" %>"><%= link_to "My Profile", user_path(current_user) %></li> 
+    	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger" style="color:#E03307">New Post</a>
+    	  </li>
       <% end %>
     </ul>
   
+  	<!-- Right part of navbar -->	
 	  <div class="nav-right">
 		  <% if logged_in? %>
 		    <p><%= current_user.first_name %> <%= current_user.last_name %><%= link_to 'Sign out', :session, :method => :delete, :class => "sign-out" %></p>
 		  <% end %>
 		</div>
-
 	</div>
-</div>
 
+		<!-- Dropdown for new post -->
+		<div id="navdropdown-newpost">
+			<%= form_for [current_user, Post.new] do |f| %>
+				<%= render "shared/newpost", :f => f %>
+			<% end %>
+		</div>
+</div>

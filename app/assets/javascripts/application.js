@@ -15,7 +15,10 @@
 //= require_tree .
 
 
-
-
-
-	
+// Dropdown for new post in navbar:
+$(document).ready(function() {
+	$('.dropdown-trigger').click(function(e){
+		e.preventDefault();
+		$('#navdropdown-newpost').toggle();
+	})	
+});
