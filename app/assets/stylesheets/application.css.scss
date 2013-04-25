@@ -12,6 +12,10 @@
  *= require_tree .
  */
 
+#clearfix {
+	clear: both;
+}
+
 html, body, #container { height: 100%; }
 body > #container { height: 100%; height: auto !important; min-height: 100%; position: relative;}
 
@@ -97,6 +101,10 @@ body > #container { height: 100%; height: auto !important; min-height: 100%; pos
 	margin-top: 5px;
 	margin-right: 15px;
 	margin-bottom: 5px;
+}
+
+.small_thumb_correction {
+	margin-left: -25px;
 }
 
 #navdropdown-newpost {
