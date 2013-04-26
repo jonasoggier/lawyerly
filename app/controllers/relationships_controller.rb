@@ -4,6 +4,8 @@ class RelationshipsController < ApplicationController
   	@relationship = current_user.relationships.build(:followed_user_id => params[:followed_user_id])
 	  @relationship.save
 
+    Notification.create(:user_id => @relationship.followed_user_id, :follower_id => @relationship.user_id)
+
     # The next two lines are exclusively needed for the followers counter on the users' show page
     id = params[:id] ? params[:id] : params[:followed_user_id] # this accounts for the first load and the subsequent Ajax requests
     @user = User.where(:id => id).first

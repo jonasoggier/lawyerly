@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'figaro'
+gem "newrelic_rpm", "~> 3.6.1.87"
 
 group :development do
 	gem 'better_errors'

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :teaser, :description, :password, :password_confirmation, :profile_picture
 
   has_many :posts, :dependent => :destroy
-
   has_many :comments, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
 
   has_many :relationships
   has_many :followed_users, :through => :relationships

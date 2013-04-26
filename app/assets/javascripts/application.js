@@ -15,10 +15,19 @@
 //= require_tree .
 
 
-// Dropdown for new post in navbar:
 $(document).ready(function() {
-	$('.dropdown-trigger').click(function(e){
+	// Dropdown for new post in navbar:
+	$('.dropdown-trigger-newpost').click(function(e){
 		e.preventDefault();
+		$('#navdropdown-notifications').hide();
 		$('#navdropdown-newpost').toggle();
 	})	
+	// Dropdown for notifications in navbar:
+	$('.dropdown-trigger-notifications').click(function(e){
+		e.preventDefault();
+		$('#navdropdown-newpost').hide();
+		$('#navdropdown-notifications').toggle();
+	})	
 });
+
+	

@@ -8,7 +8,9 @@
     	<% if logged_in? %>
     		<!-- TODO active state needs to be fixed -->
     	  <li class="<%= "active" if controller_name == "#" %>"><%= link_to "My Profile", user_path(current_user) %></li> 
-    	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger" style="color:#E03307">New Post</a>
+    	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger-newpost" style="color:#E03307">New Post</a>
+    	  </li>
+    	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger-notifications">Notifications</a>
     	  </li>
       <% end %>
     </ul>
@@ -27,4 +29,16 @@
 				<%= render "shared/newpost", :f => f %>
 			<% end %>
 		</div>
+
+		<!-- Dropdown for notifications -->
+		<div id="navdropdown-notifications">
+			<% current_user.notifications.recent.each do |notification| %>
+				<a href="<%= user_path(User.find(notification.follower_id)) %>" class="notification">
+					<%= image_tag User.find(notification.follower_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
+					<p><span><%= User.find(notification.follower_id).first_name %> <%= User.find(notification.follower_id).last_name %></p>
+					<p>is now following you</span></p>
+				</a>
+			<% end %>
+		</div>
+
 </div>
