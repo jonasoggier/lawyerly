@@ -38,7 +38,7 @@
 			<% if current_user.notifications.empty? %>
 				<p>No new notifications</p>
 			<% else %>
-				<% current_user.notifications.recent.each do |notification| %>
+				<% current_user.notifications.each do |notification| %>
 					<%= link_to(notification_path(notification), :method => :delete, :class => "notification") do %>
 						<%= image_tag User.find(notification.follower_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
 						<p><span><%= User.find(notification.follower_id).first_name %> <%= User.find(notification.follower_id).last_name %></p>
