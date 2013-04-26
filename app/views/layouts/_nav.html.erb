@@ -11,6 +11,9 @@
     	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger-newpost" style="color:#E03307">New Post</a>
     	  </li>
     	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger-notifications">Notifications</a>
+    	  	<% if current_user.notifications.any? %>
+    	  		<div id="notification-bubble"><%= current_user.notifications.count %></div>
+    	  	<% end %>
     	  </li>
       <% end %>
     </ul>
@@ -32,12 +35,19 @@
 
 		<!-- Dropdown for notifications -->
 		<div id="navdropdown-notifications">
-			<% current_user.notifications.recent.each do |notification| %>
-				<a href="<%= user_path(User.find(notification.follower_id)) %>" class="notification">
-					<%= image_tag User.find(notification.follower_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
-					<p><span><%= User.find(notification.follower_id).first_name %> <%= User.find(notification.follower_id).last_name %></p>
-					<p>is now following you</span></p>
-				</a>
+			<% if current_user.notifications.empty? %>
+				<p>No new notifications</p>
+			<% else %>
+				<% current_user.notifications.recent.each do |notification| %>
+					<%= link_to(notification_path(notification), :method => :delete, :class => "notification") do %>
+						<%= image_tag User.find(notification.follower_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
+						<p><span><%= User.find(notification.follower_id).first_name %> <%= User.find(notification.follower_id).last_name %></p>
+						<p>is now following you</span></p>
+						<% if current_user.notifications.count >= 2  %>
+							<div class="divider"></div>
+						<% end %>
+					<% end %>		
+				<% end %>
 			<% end %>
 		</div>
 

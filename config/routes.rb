@@ -11,5 +11,6 @@ Lawyerly::Application.routes.draw do
   end
 
   resources :relationships, :only => [:create, :destroy]
+  resources :notifications, :only => [:destroy]
    
 end
