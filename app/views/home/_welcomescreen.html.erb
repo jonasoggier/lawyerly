@@ -5,6 +5,8 @@
 		<h2>Find interesting content, connect with other lawyers and build your personal brand...</h2>
 	</div>
 
+	<%= render '/shared/flashes' %>
+	
 	<%= render "/sessions/new" %>
 
 	<%= render "/users/newuser", :user => User.new %> 

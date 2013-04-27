@@ -1,10 +1,12 @@
 <div class="text-container">
 
+	<%= render '/shared/flashes' %>
+
 	<div class="feed-container">
 
 		<!-- Display list of all posts -->
 		<div class="posts-container">
-			<h2>Welcome back, <%= current_user.first_name %></h2>
+			<h2>Welcome back, <span style="font-family:'Pacifico'"><%= current_user.first_name %></span></h2>
 			<%= render 'shared/posts', :posts_variable => @feed_items %>
 		</div>
 

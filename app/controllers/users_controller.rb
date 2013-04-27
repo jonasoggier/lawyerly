@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   		auto_login(@user)
   		redirect_to @user, notice: "Account successfully created."
   	else
-  		render :new # TODO
-  	end
+  		redirect_to root_path, alert: "There was a problem with your sign-up. Please try again." # TODO!!!
+    end
   end
 
   def edit
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     if current_user == User.find(params[:id]) # TBD if this is sufficient protection!
       @user = User.find(params[:id])
       @user.destroy
-      redirect_to root_path
+      redirect_to root_path, alert: "Profile successfully deleted." 
     end
   end
 

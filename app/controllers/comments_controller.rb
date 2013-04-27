@@ -6,9 +6,11 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.save
 
-    Notification.create(:user_id => @post.user_id, :commenter_id => @comment.user_id, :post_id => @post.id)
+    unless @post.user_id == current_user.id
+    	Notification.create(:user_id => @post.user_id, :commenter_id => @comment.user_id, :post_id => @post.id)
+  	end
 
-    redirect_to root_path, :notice => "Your comment was successfully submitted."
+    redirect_to :back, :notice => "Your comment was successfully submitted."
   end
 
 end

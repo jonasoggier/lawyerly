@@ -2,27 +2,22 @@
 
 	<!-- Left part of navbar -->
 	<div class="navbar-inner">
-   	<%= link_to "Lawyerly", root_path, :class => "brand", :style => "margin-left:0; color:#08C; font-family:'Pacifico'; font-size:40px" %>
-   	<%= render '/shared/flashes' %>
+   	<%= link_to "Lawyerly", root_path, :class => "brand", :style => "margin-left:0; margin-right:20px; color:#08C; font-family:'Pacifico'; font-size:40px" %>
+   	
     <ul class="nav">
-    	<% if logged_in? %>
-    		<!-- TODO active state needs to be fixed -->
-    	  <li class="<%= "active" if controller_name == "#" %>"><%= link_to "My Profile", user_path(current_user) %></li> 
-    	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger-newpost" style="color:#E03307">New Post</a>
-    	  </li>
-    	  <li class="<%= "active" if controller_name == "#" %>"><a href="#" class="dropdown-trigger-notifications">Notifications</a>
-    	  	<% if current_user.notifications.any? %>
-    	  		<div id="notification-bubble"><%= current_user.notifications.count %></div>
-    	  	<% end %>
-    	  </li>
-      <% end %>
+  	  <i class="icon-user icon-white"></i><li class="<%= "active" if controller_name == "users" %>"><%= link_to "My Profile", user_path(current_user) %></li> 
+  	  <i class="icon-pencil icon-white"></i><li><a href="#" class="dropdown-trigger-newpost">New Post</a>
+  	  </li>
+  	  <i class="icon-envelope icon-white"></i><li><a href="#" class="dropdown-trigger-notifications">Notifications</a>
+  	  	<% if current_user.notifications.any? %>
+  	  		<div id="notification-bubble"><%= current_user.notifications.count %></div>
+  	  	<% end %>
+  	  </li> 
     </ul>
   
   	<!-- Right part of navbar -->	
 	  <div class="nav-right">
-		  <% if logged_in? %>
-		    <p><%= current_user.first_name %> <%= current_user.last_name %><%= link_to 'Sign out', :session, :method => :delete, :class => "sign-out" %></p>
-		  <% end %>
+		  <p><%= current_user.first_name %> <%= current_user.last_name %><%= link_to 'Sign out', :session, :method => :delete, :class => "sign-out" %></p>
 		</div>
 	</div>
 

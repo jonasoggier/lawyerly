@@ -10,7 +10,7 @@
 
 <div id="container">
 
-	<% unless controller_name == 'home' && !logged_in? %>
+	<% if logged_in? %>
 		<%= render "/layouts/nav" %>
 	<% end %>
 
