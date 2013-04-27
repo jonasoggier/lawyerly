@@ -138,9 +138,14 @@ body > #container { height: 100%; height: auto !important; min-height: 100%; pos
 		span {
 			font-weight: bold;
 		}
+		.title-correct {
+			margin-left: 44px;
+			margin-top: -6px;
+		}
 		.divider {
 			border-bottom: 1px solid #999999;
 			margin-right: 12px;
+			margin-bottom: 10px;
 			opacity: 0.8;
 		}
 	&:hover {
