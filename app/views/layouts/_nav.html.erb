@@ -38,7 +38,7 @@
 						<% if notification.follower_id != nil %>
 							<%= image_tag User.find(notification.follower_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
 							<p><span><%= User.find(notification.follower_id).first_name %> <%= User.find(notification.follower_id).last_name %></span></p>
-							<p><span>is now following you</span></p>
+							<p>is now following you</p>
 						<% else %>
 							<%= image_tag User.find(notification.commenter_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
 							<p><span><%= User.find(notification.commenter_id).first_name %> <%= User.find(notification.commenter_id).last_name %></span></p>
