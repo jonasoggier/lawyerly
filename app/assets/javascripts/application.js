@@ -28,6 +28,17 @@ $(document).ready(function() {
 		$('#navdropdown-newpost').hide();
 		$('#navdropdown-notifications').toggle();
 	})	
+
+	// Footer:
+	$('#footer li a').mouseenter(function(e){
+		$(this).addClass('css-mouseover');
+	})
+	$('#footer li a').mouseleave(function(e){
+		$(this).removeClass('css-mouseover');
+	})
+	$('#footer li a').click(function(e){
+		e.preventDefault();
+	})
 });
 
 	
