@@ -54,4 +54,19 @@
 			<% end %>
 		</div>
 
+		<!-- Search form -->
+		<div>
+			<%= form_tag users_path, :method => 'get' do %>
+		    <%= text_field_tag :search, params[:search] %>
+		    <%= submit_tag "Search", :name => nil %>
+			<% end %>
+		</div>
+
+		<% if session[:search_users] != nil %>
+		  <% session[:search_users].each do |user| %>
+				<%= user.first_name %> <%= user.last_name %><br>
+			<% end %>
+			<% session[:search_users] = nil %>
+		<% end %>
+	
 </div>

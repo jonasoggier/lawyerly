@@ -23,6 +23,13 @@ class User < ActiveRecord::Base
     Post.from_users_followed_by(self) 
   end
 
-  
+  def self.search(search)
+    # split up 'search' in separate words if 'search' contains several names
+    if search
+      where 'first_name LIKE ? OR last_name LIKE ?', search, search
+    else
+      scoped
+    end
+  end
 
 end

@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 
   # "new action" is on homepage (home#index) 
   
+  def index # exclusively needed for user search in navbar
+    @search_users = User.search(params[:search])
+    session[:search_users] = @search_users # needes to be saved in session b/c of redirect
+    redirect_to :back
+  end
+
   def show
     @user = User.find(params[:id]) 
     @post = Post.new # needed as input for new posts form
@@ -44,5 +50,5 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: "Profile successfully deleted." 
     end
   end
-
+ 
 end
