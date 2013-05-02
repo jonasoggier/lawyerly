@@ -63,14 +63,41 @@ html, body {
 .navbar-inner {
 	color: #BBB;
 	text-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px;
+	height: 40px;
 	li {
 		margin-left: 5px;
 		margin-right: 20px;
 	}
 }
 
+.search-form {
+	float: right;
+	height: 16px;
+	margin-top: -36px;
+	margin-right: 32px;
+}
+
+.search-input-hide {
+	display: none;
+}
+
+#search-results {
+	float: right;
+	background-color: black;
+	width: 280px;
+	height: auto;
+	padding-left: 14px;
+	margin-right: 140px;
+	margin-top: -20px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	opacity: 0.85;
+	line-height: 30px;
+	color: white;
+}
+
 .nav-right {
-	position: absolute;
+	float: right;
 	right: 20px;
 	line-height: 40px;
 	font-size: 14px;
@@ -160,6 +187,7 @@ html, body {
 	height: 190px;
 	padding-top: 12px;
 	margin-left: 450px;
+	margin-top: -32px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
