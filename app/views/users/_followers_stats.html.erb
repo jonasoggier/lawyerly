@@ -7,7 +7,7 @@
 	  	<li>
 	  		<%= link_to "#{user.first_name} #{user.last_name}", user %> 
 				<% unless following_helper_2?(user) %>
-	  			<%= link_to "- Follow", relationships_path(:followed_user_id => user), :method => :post %>
+	  			<%= link_to "Follow", relationships_path(:followed_user_id => user), :method => :post, :class => "btn btn-primary btn-mini" %>
 	  		<% end %>
 	  	</li>
 	  	<div id="clearfix"></div>
