@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :profile_picture, ProfilePictureUploader
 
-  validates_length_of :password, :minimum => 5, :flash => "Password must be at least 5 characters long", :if => :password
+  validates_length_of :password, :minimum => 4, :flash => "Password must be at least 5 characters long", :if => :password
   validates_confirmation_of :password, :flash => "Password should match confirmation", :if => :password
   validates :email, :presence => true, :uniqueness => true
 
@@ -23,13 +23,32 @@ class User < ActiveRecord::Base
     Post.from_users_followed_by(self) 
   end
 
-  def self.search(search)
-    # split up 'search' in separate words if 'search' contains several names
-    if search
-      where 'first_name LIKE ? OR last_name LIKE ?', search, search
+  def self.search(input)
+    search = input.split(" ")
+    number_words = search.length
+    original_string = 'first_name ILIKE ? OR last_name ILIKE ?'
+    string_add = 'OR first_name ILIKE ? OR last_name ILIKE ?'
+        
+    i = 0
+    while i < (number_words - 1) do
+       original_string = "#{original_string} #{string_add}"
+       i += 1
+    end      
+  
+    # this is an unelegant hack => improve!
+    if input
+      if number_words == 1
+        where original_string, search[0], search[0]
+      elsif number_words == 2
+        where original_string, search[0], search[0], search[1], search[1]
+      elsif number_words == 3
+        where original_string, search[0], search[0], search[1], search[1], search[2], search[2]
+      elsif number_words == 4
+        where original_string, earch[0], search[0], search[1], search[1], search[2], search[2], search[3], search[3]
+      end
     else
       scoped
     end
   end
-
+  
 end
