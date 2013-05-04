@@ -31,14 +31,22 @@
 		<!-- Dropdown for search results -->
 		<div id="search-results">
 			<% if session[:search_users] != nil %>
-			  <% session[:search_users].each do |user| %>
-			  	<div class="search-result">
-						<%= image_tag user.profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
-						<p><span><%= user.first_name %> <%= user.last_name %></span></p>
+				<% if session[:search_users].empty? %>
+					<div class="search-result">
+						<p><span>No name matches your search</span></p>
 					</div>
+				<% else %>
+				  <% session[:search_users].each do |user| %>
+				  	<%= link_to(user_path(user), :class => "search-link") do %>
+					  	<div class="search-result">
+								<%= image_tag user.profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
+								<p><span><%= user.first_name %> <%= user.last_name %></span></p>
+							</div>
+						<% end %>	
+					<% end %>
 				<% end %>
 				<% session[:search_users] = nil %>
-			<% end %>
+			<% end %>	
 		</div>
 		
 		<!-- Dropdown for new post -->
