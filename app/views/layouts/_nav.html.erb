@@ -36,11 +36,11 @@
 						<p><span>No name matches your search</span></p>
 					</div>
 				<% else %>
-				  <% session[:search_users].each do |user| %>
-				  	<%= link_to(user_path(user), :class => "search-link") do %>
+				  <% session[:search_users].each do |record| %>
+				  	<%= link_to(user_path(User.find(record.searchable_id)), :class => "search-link") do %>
 					  	<div class="search-result">
-								<%= image_tag user.profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
-								<p><span><%= user.first_name %> <%= user.last_name %></span></p>
+								<%= image_tag User.find(record.searchable_id).profile_picture_url(:small_thumb).to_s, :class => "profile_picture small_thumb_profile_picture" %>
+								<p><span><%= User.find(record.searchable_id).first_name %> <%= User.find(record.searchable_id).last_name %></span></p>
 							</div>
 						<% end %>	
 					<% end %>

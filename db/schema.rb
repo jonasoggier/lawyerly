@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426200053) do
+ActiveRecord::Schema.define(:version => 20130505000817) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(:version => 20130426200053) do
   add_index "notifications", ["commenter_id"], :name => "index_notifications_on_commenter_id"
   add_index "notifications", ["post_id"], :name => "index_notifications_on_post_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"

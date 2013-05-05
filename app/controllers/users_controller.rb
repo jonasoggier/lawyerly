@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # "new action" is on homepage (home#index) 
   
   def index # exclusively needed for user search in navbar
-    @search_users = User.search(params[:search])
+    @search_users = PgSearch.multisearch(params[:search])
     session[:search_users] = @search_users # needes to be saved in session b/c of redirect
     redirect_to :back
   end
