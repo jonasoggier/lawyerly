@@ -12,6 +12,11 @@
  *= require_tree .
  */
 
+
+// ======================
+// Document structure
+// ======================
+
 #clearfix {
 	clear: both;
 }
@@ -22,7 +27,7 @@ html, body {
 }
 
 #container {
-	min-height: calc(100% - 0px); // 60px is height of footer (see below)
+	min-height: 100%; 
 	background-color: #F6F6F6; 
 }
 
@@ -53,12 +58,20 @@ html, body {
 	}
 }
 
+// ======================
+// Flash messages
+// ======================
+
 .flashes {
 	width: 400px;	
 	font-size: 12px;
 	margin: auto;
 	line-height: 16px;
 }
+
+// ======================
+// Navbar
+// ======================
 
 .navbar-inner {
 	color: #BBB;
@@ -129,66 +142,6 @@ html, body {
 	top: 11px;
 }
 
-#footer {
-	clear: both;
-	width:100%;
-	height:80px;  
-	padding-top: 15px; 
-	background-color: #E9E9E9;
-	color: #A7A9AA;
-	opacity: 0.75;
-	text-decoration: none;
-	ul {
-		text-align: center;
-	}
-	li {
-		display: inline;
-		padding-left: 12px;
-		padding-right: 12px;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		line-height: 15px;
-		.css-mouseover {
-			color: gray;
-			text-decoration: none;
-		}
-	}
-	p {
-		margin-top: 10px;
-		text-align: right;
-	}
-	#footer-inner {
-		margin: auto;
-		width: 60%;
-	}
-	.footer-divider {
-		border-bottom: 1px solid #A7A9AA;
-		margin-left: 28px;
-	}
-}
-
-.profile_picture {
-	border-radius: 5px;
-}
-
-.thumb_profile_picture {
-	float: left;
-	margin-top: 5px;
-	margin-right: 20px;
-	margin-bottom: 5px;
-}
-
-.small_thumb_profile_picture {
-	float: left;
-	margin-top: 5px;
-	margin-right: 15px;
-	margin-bottom: 5px;
-}
-
-.small_thumb_correction {
-	margin-left: -25px;
-}
-
 #navdropdown-newpost, #navdropdown-notifications {
 	display: none;
 	background-color: black;
@@ -251,3 +204,71 @@ html, body {
 	color: white;
 	padding-left: 7px;
 }
+
+// ======================
+// Footer
+// ======================
+
+#footer {
+	clear: both;
+	width:100%;
+	height:80px;  
+	padding-top: 15px; 
+	background-color: #E9E9E9;
+	color: #A7A9AA;
+	opacity: 0.75;
+	text-decoration: none;
+	ul {
+		text-align: center;
+	}
+	li {
+		display: inline;
+		padding-left: 12px;
+		padding-right: 12px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		line-height: 15px;
+		.css-mouseover {
+			color: gray;
+			text-decoration: none;
+		}
+	}
+	p {
+		margin-top: 10px;
+		text-align: right;
+	}
+	#footer-inner {
+		margin: auto;
+		width: 60%;
+	}
+	.footer-divider {
+		border-bottom: 1px solid #A7A9AA;
+		margin-left: 28px;
+	}
+}
+// ======================
+// Profile pictures 
+// ======================
+
+.profile_picture {
+	border-radius: 5px;
+}
+
+.thumb_profile_picture {
+	float: left;
+	margin-top: 5px;
+	margin-right: 20px;
+	margin-bottom: 5px;
+}
+
+.small_thumb_profile_picture {
+	float: left;
+	margin-top: 5px;
+	margin-right: 15px;
+	margin-bottom: 5px;
+}
+
+.small_thumb_correction {
+	margin-left: -25px;
+}
+
