@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 
@@ -24,14 +25,14 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'figaro'
-gem "newrelic_rpm", "~> 3.6.1.87"
+gem 'newrelic_rpm', '~> 3.6.1.87'
 gem 'protected_attributes'
 
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'pry-rails'
-	gem "letter_opener"
+	gem 'letter_opener'
 end
 
 # To use ActiveModel has_secure_password
