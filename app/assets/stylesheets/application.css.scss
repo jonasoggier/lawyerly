@@ -196,7 +196,7 @@ html, body {
 	float: right;
 	margin-left: 100px;
 	margin-top: -36px;
-	background-image: url('notification-bubble.png');
+	background-image: asset-url('notification-bubble.png', image);
 	background-repeat: no-repeat;
 	height: 32px;
 	width: 26px;

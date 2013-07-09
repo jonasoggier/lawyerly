@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   
   def index # exclusively needed for user search in navbar
     @search_users = PgSearch.multisearch(params[:search])
-    session[:search_users] = @search_users # needes to be saved in session b/c of redirect
+    session[:search_users] = @search_users # needs to be saved in session b/c of redirect
     redirect_to :back
   end
 
